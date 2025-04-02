@@ -5,7 +5,7 @@ okno.geometry("400x800")
 def aktivni(val):
     global rychlost
     rychlost = int(val)
-
+okno.config(bg="green")
 
 rychlost = 2000
 frame = Frame(okno)
