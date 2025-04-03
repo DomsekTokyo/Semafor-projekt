@@ -1,16 +1,16 @@
 from tkinter import *
 
 okno = Tk()
-okno.geometry("400x800")
+okno.geometry("400x800+1200+100")
 def aktivni(val):
     global rychlost
     rychlost = int(val)
-okno.config(bg="green")
-
+okno.config(bg="black")
+okno.title("Semafor")
 rychlost = 2000
-frame = Frame(okno)
+frame = Frame(okno, background = "black")
 frame.pack(side=RIGHT)
-scale = Scale(frame,from_=100, to=5000, length=400, orient=VERTICAL, tickinterval=500, showvalue=0, troughcolor="blue", command=aktivni)
+scale = Scale(frame,from_=100, to=5000, length=400, orient=VERTICAL, tickinterval=500, showvalue=0, troughcolor="green", command=aktivni, bg="black", fg="green", font=("arial", 20))
 scale.pack()
 scale.set(rychlost)
 def vychozi():
@@ -20,13 +20,13 @@ def vychozi():
     
 
 #damne tlačitko na vychozi hodnotu
-tlačitko = Button(frame, text = "výchozí", command = vychozi)
+tlačitko = Button(frame, text = "výchozí", command = vychozi, bg = "black", fg="green", font=("arial", 20))
 tlačitko.pack()
 
 
 
 obrazek = PhotoImage(file = "C:\\Users\\mikul\\OneDrive\\Plocha\\python\\Projekt_Kalkulačka\\Python_calc\\logo2.png")
-text = Label(text = "Semafor", bg = "black", fg="green",font=('arial',40), justify=CENTER, relief=SUNKEN,borderwidth=10, image = obrazek,
+text = Label(text = "Semafor", bg = "black", fg="green",font=('arial',30), justify=CENTER, relief=SUNKEN,borderwidth=10, image = obrazek,
              compound=TOP)
 text.pack(side=TOP)
 canva = Canvas(okno, width=170, height=380, background="black")
@@ -118,16 +118,19 @@ def vyber():
             canva.itemconfig(cervena, fill = "red")
             canva.itemconfig(zelena, fill = "green")
             canva.itemconfig(zluta, fill = "yellow")
+
+
 y = IntVar()
 moznosti = ["červena","žluta","zelena", "reset"]
 for a in range(len(moznosti)):
-    radio = Radiobutton(okno,text = moznosti[a], variable=y, value=a, command = vyber, font =("Arial",20), indicatoron=0, padx = 40)
+    radio = Radiobutton(okno,text = moznosti[a], variable=y, value=a, command = vyber, font =("Arial",20), indicatoron=1, padx = 40, bg = "black", fg = "green"
+                       ,activebackground="black", activeforeground="green", relief= RIDGE, bd=3)
     radio.pack()
 
 
-potrvzeno = Checkbutton(okno, text="rozsvítit semafor", variable=x, offvalue = 0, onvalue=1, command = zapnout, font =("Arial",20))
+potrvzeno = Checkbutton(okno, text="rozsvítit semafor", variable=x, offvalue = 0, onvalue=1, command = zapnout, font =("Arial",20), bg="black", foreground="green"
+                        ,activebackground="black", activeforeground="green")
 potrvzeno.pack()
-
 
 
 
